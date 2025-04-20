@@ -15,14 +15,16 @@ const username = 'admin';
 const password = 'password';
 
 // Initialize Web3 with a provider
-const web3 = new Web3('http://localhost:7545');
+//const web3 = new Web3('http://localhost:7545');
+const web3 = new Web3('http://127.0.0.1:7545');  // Use this instead of localhos
 
 // Load the smart contract ABI and address
 const contractABI = FileStorageContract.abi;
-const contractAddress = '0x01eB2085e9783E8f445e0E30E6E0611704B4aF9e';
+const contractAddress='0x224Cfc199D58B0383A6E08f982136f4D9BAEf6e7';
+
 
 // Initialize the contract instance
-const fileStorageContract = new web3.eth.Contract(contractABI, contractAddress);
+const fileStorageContract = new web3.eth.Contract(contractABI,contractAddress);
 
 // Function to upload file to Pinata
 async function uploadToPinata(filePath) {
@@ -33,7 +35,7 @@ async function uploadToPinata(filePath) {
       headers: {
         'Content-Type': 'multipart/form-data',
         'pinata_api_key': process.env.PINATA_API_KEY,
-        'pinata_secret_api_key': process.env.PINATA_SECRET_API_KEY
+        'pinata_secret_api_key': process.env.PINATA_SECRET_API_KEY,
       }
     });
     return response.data.IpfsHash;
@@ -44,7 +46,7 @@ async function uploadToPinata(filePath) {
 }
 
 // Connect to the database
-connectDB();
+
 
 // Define the Number schema and model
 const NumberSchema = new mongoose.Schema({
