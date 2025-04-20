@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
     try {
       await mongoose.connect(
-        'mongodb+srv://filesharingapp:vedant%40123@vedant.jfvpwaf.mongodb.net/filesharing-app?retryWrites=true&w=majority',
+        'mongodb+srv://filesharingapp:',
         { useNewUrlParser: true, useUnifiedTopology: true }
       );
       console.log('Connected to MongoDB');
